@@ -7,7 +7,7 @@ RSpec.describe '#Race' do
     @candidate1 = Candidate.new({name: "Diana D", party: :democrat})
     @candidate2 = Candidate.new({name: "Roberto R", party: :republican})
   end
-  describe '#step up' do
+  describe '#setup' do
     it 'exists' do
       expect(@race).to be_instance_of Race
     end
@@ -33,6 +33,7 @@ RSpec.describe '#Race' do
       @race.register_candidate!(@candidate2)
       expect(@race.candidates).to eq([@candidate1, @candidate2])
       expect(@race.candidates.count).to eq(2)
+      # require 'pry'; binding.pry
     end
   end
 end
