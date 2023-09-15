@@ -44,20 +44,24 @@ RSpec.describe '#Race' do
       @race.close!
 
       expect(@race.open?).to be false
-      require 'pry'; binding.pry
+      # require 'pry'; binding.pry
     end
 
     it 'has a winner' do
       @race.register_candidate!(@candidate1)
       @race.register_candidate!(@candidate2)
 
-      candidate1.vote_for!
-      candidate1.vote_for!
-      candidate2.vote_for!
+      @candidate1.vote_for!
+      @candidate1.vote_for!
+      @candidate2.vote_for!
+      
 
       expect(@race.winner).to be false
 
-      expect(@race.winner).to eq(candidate1)
+      @race.close!
+      expect(@race.open?).to be false
+
+      expect(@race.winner).to eq(@candidate1)
     end
   end
 end

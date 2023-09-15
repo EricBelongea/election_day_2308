@@ -20,11 +20,13 @@ class Race
   end
 
   def winner
-    if @open == true
-      return false
+    return false if @open
+    sorted_votes = @candidates.sort_by { |candidate| candidate.votes }
+    
+    if sorted_votes[0].votes == sorted_votes[1].votes
+      return "It's a tie!"
     else
-      if @candidates[]
-
+      return sorted_votes[-1]
     end
   end
 end
